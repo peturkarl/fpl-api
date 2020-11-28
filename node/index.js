@@ -170,7 +170,7 @@ function fetchH2HLeagueStandings(session, leagueId, { pageStandings, pageNewEntr
             const fetchWithCookieJar = node_fetch_2.default(node_fetch_1.default, session);
             const response = yield fetchWithCookieJar(`https://draft.premierleague.com/api/league/${leagueId}/details`);
             validateResponse(response);
-            return response.json().standings;
+            return response.json();
         }
         catch (error) {
             throw error;
@@ -184,7 +184,7 @@ function fetchH2HMatches(session, leagueId, entryId, page = 1) {
             const fetchWithCookieJar = node_fetch_2.default(node_fetch_1.default, session);
             const response = yield fetchWithCookieJar(`https://draft.premierleague.com/api/leagues-h2h-matches/league/${leagueId}/?page=${page}&entry=${entryId}`);
             validateResponse(response);
-            return response.json().matches;
+            return response.json();
         }
         catch (error) {
             throw error;

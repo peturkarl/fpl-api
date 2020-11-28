@@ -282,7 +282,7 @@ export async function fetchH2HLeagueStandings(
 
     validateResponse(response)
 
-    return response.json().standings
+    return response.json()
   } catch (error) {
     throw error
   }
@@ -310,7 +310,7 @@ export async function fetchH2HMatches(
 
     validateResponse(response)
     
-    return response.json().matches
+    return response.json()
   } catch (error) {
     throw error
   }
