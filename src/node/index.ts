@@ -40,7 +40,7 @@ function validateResponse(response: Response): void {
 export async function fetchBootstrap(): Promise<Bootstrap> {
   try {
     const response = await fetch(
-      'https://fantasy.premierleague.com/api/bootstrap-static/',
+      'https://draft.premierleague.com/api/bootstrap-static',
       {
         headers: {
           ...HEADERS,
@@ -65,7 +65,7 @@ export async function fetchElementSummary(
 ): Promise<ElementSummary> {
   try {
     const response = await fetch(
-      `https://fantasy.premierleague.com/api/element-summary/${elementId}/`,
+      `https://draft.premierleague.com/api/element-summary/${elementId}`,
       {
         headers: {
           ...HEADERS,
@@ -118,7 +118,7 @@ export async function fetchEntryEvent(
 export async function fetchEventStatus(): Promise<EventStatus> {
   try {
     const response = await fetch(
-      'https://fantasy.premierleague.com/api/event-status',
+      'https://draft.premierleague.com/api/pl/event-status',
       {
         headers: {
           ...HEADERS,
@@ -140,11 +140,11 @@ export async function fetchEventStatus(): Promise<EventStatus> {
  */
 export async function fetchFixtures(eventId?: number): Promise<Fixture[]> {
   try {
-    let uri = 'https://fantasy.premierleague.com/api/fixtures/'
+    let uri = 'https://draft.premierleague.com/api/fixtures'
     let response
 
     if (eventId !== undefined) {
-      uri = `https://fantasy.premierleague.com/api/fixtures?event=${eventId}`
+      uri = `https://draft.premierleague.com/api/fixtures?event=${eventId}`
     }
 
     response = await fetch(uri)
@@ -164,7 +164,7 @@ export async function fetchFixtures(eventId?: number): Promise<Fixture[]> {
 export async function fetchLive(eventId: number): Promise<Live> {
   try {
     const response = await fetch(
-      `https://fantasy.premierleague.com/api/event/${eventId}/live/`,
+      `https://draft.premierleague.com/api/event/${eventId}/live`,
       {
         headers: {
           ...HEADERS,
@@ -191,7 +191,7 @@ export async function addToWatchList(
 ): Promise<boolean> {
   const fetchWithCookieJar = fetchCookie(fetch, session)
   const response = await fetchWithCookieJar(
-    `https://fantasy.premierleague.com/api/watchlist/${elementCode}/`,
+    `https://draft.premierleague.com/api/watchlist/${elementCode}`,
     {
       method: 'POST',
     },
@@ -213,7 +213,7 @@ export async function removeFromWatchList(
 ): Promise<boolean> {
   const fetchWithCookieJar = fetchCookie(fetch, session)
   const response = await fetchWithCookieJar(
-    `https://fantasy.premierleague.com/api/watchlist/${elementCode}/`,
+    `https://draft.premierleague.com/api/watchlist/${elementCode}`,
     {
       method: 'DELETE',
     },
@@ -277,12 +277,12 @@ export async function fetchH2HLeagueStandings(
     const fetchWithCookieJar = fetchCookie(fetch, session)
     const response = await fetchWithCookieJar(
       // tslint:disable-next-line
-      `https://fantasy.premierleague.com/api/leagues-h2h/${leagueId}/standings/?page_new_entries=${pageNewEntries}&page_standings=${pageStandings}`,
+      `https://draft.premierleague.com/api/league/${leagueId}/details`,
     )
 
     validateResponse(response)
 
-    return response.json()
+    return response.json().standings
   } catch (error) {
     throw error
   }
@@ -305,12 +305,12 @@ export async function fetchH2HMatches(
     const fetchWithCookieJar = fetchCookie(fetch, session)
     const response = await fetchWithCookieJar(
       // tslint:disable-next-line
-      `https://fantasy.premierleague.com/api/leagues-h2h-matches/league/${leagueId}/?page=${page}&entry=${entryId}`,
+      `https://draft.premierleague.com/api/leagues-h2h-matches/league/${leagueId}/?page=${page}&entry=${entryId}`,
     )
 
     validateResponse(response)
-
-    return response.json()
+    
+    return response.json().matches
   } catch (error) {
     throw error
   }
@@ -325,7 +325,7 @@ export async function fetchEntryHistory(
 ): Promise<EntryHistory> {
   try {
     const response = await fetch(
-      `https://fantasy.premierleague.com/api/entry/${entryId}/history/`,
+      `https://draft.premierleague.com/api/entry/${entryId}/history`,
       {
         headers: {
           ...HEADERS,
@@ -348,7 +348,7 @@ export async function fetchEntryHistory(
 export async function fetchEntry(entryId: number): Promise<Entry> {
   try {
     const response = await fetch(
-      `https://fantasy.premierleague.com/api/entry/${entryId}/`,
+      `https://draft.premierleague.com/api/entry/${entryId}`,
       {
         headers: {
           ...HEADERS,
@@ -371,7 +371,7 @@ export async function fetchCurrentUser(session: CookieJar): Promise<Me> {
   try {
     const fetchWithCookieJar = fetchCookie(fetch, session)
     const response = await fetchWithCookieJar(
-      'https://fantasy.premierleague.com/api/me/',
+      'https://fantasy.premierleague.com/api/me',
     )
 
     validateResponse(response)
@@ -393,7 +393,7 @@ export async function fetchMyTeam(
   try {
     const fetchWithCookieJar = fetchCookie(fetch, session)
     const response = await fetchWithCookieJar(
-      `https://fantasy.premierleague.com/api/my-team/${entryId}/`,
+      `https://fantasy.premierleague.com/api/my-team/${entryId}`,
     )
 
     validateResponse(response)

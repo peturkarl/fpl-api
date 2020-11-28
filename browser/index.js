@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.fetchMyTeam = exports.fetchCurrentUser = exports.fetchEntry = exports.fetchEntryHistory = exports.fetchH2HMatches = exports.fetchH2HLeagueStandings = exports.fetchClassicLeague = exports.removeFromWatchList = exports.addToWatchList = exports.fetchLive = exports.fetchFixtures = exports.fetchEventStatus = exports.fetchEntryEvent = exports.fetchElementSummary = exports.fetchBootstrap = void 0;
 function validateResponse(response) {
     if (!response.ok) {
         throw new Error(`${response.status} ${response.statusText}`);

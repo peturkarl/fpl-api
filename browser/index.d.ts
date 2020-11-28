@@ -1,11 +1,4 @@
-export enum ElementStatus {
-  AVAILABLE = 'a',
-  UNAVAILABLE = 'u',
-  INJURED = 'i',
-  SUSPENDED = 's',
-  NOT_PLAYING = 'n',
-  DEPARTED = 'd',
-}
+export type ElementStatus = 'a' | 'u' | 'i' | 's' | 'n' | 'd'
 
 export type ChipName = 'bboost' | '3xc' | 'freehit' | 'wildcard'
 
