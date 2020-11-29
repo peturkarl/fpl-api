@@ -61,7 +61,7 @@ exports.fetchElementSummary = fetchElementSummary;
 function fetchEntryEvent(entryId, eventId) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const response = yield node_fetch_1.default(`https://fantasy.premierleague.com/api/entry/${entryId}/event/${eventId}/picks/`, {
+            const response = yield node_fetch_1.default(`https://draft.premierleague.com/api/entry/${entryId}/event/${eventId}`, {
                 headers: Object.assign({}, HEADERS),
             });
             validateResponse(response);

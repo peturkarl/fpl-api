@@ -96,7 +96,7 @@ export async function fetchEntryEvent(
 ): Promise<EntryEvent> {
   try {
     const response = await fetch(
-      `https://fantasy.premierleague.com/api/entry/${entryId}/event/${eventId}/picks/`,
+      `https://draft.premierleague.com/api/entry/${entryId}/event/${eventId}`,
       {
         headers: {
           ...HEADERS,
